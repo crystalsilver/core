@@ -24,6 +24,11 @@ ifeq ($(GPU_SUPPORT),true)
     TAGS+=cl
 endif
 
+INFRA_ONLY?=false
+ifeq ($(INFRA_ONLY),true)
+    TAGS+=infra
+endif
+
 .PHONY: fmt vet test
 
 all: mock vet fmt build test

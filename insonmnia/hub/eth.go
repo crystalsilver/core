@@ -1,3 +1,5 @@
+// +build !infra
+
 package hub
 
 import (
@@ -10,17 +12,6 @@ import (
 	pb "github.com/sonm-io/core/proto"
 	"github.com/sonm-io/core/util"
 )
-
-type ETH interface {
-	// WaitForDealCreated waits for deal created on Buyer-side
-	WaitForDealCreated(request *structs.DealRequest) (*pb.Deal, error)
-
-	// AcceptDeal approves deal on Hub-side
-	AcceptDeal(id string) error
-
-	// CheckDealExists checks whether a given deal exists.
-	CheckDealExists(id string) (bool, error)
-}
 
 type eth struct {
 	key *ecdsa.PrivateKey
